@@ -42,7 +42,7 @@ export const Main = ({
         </h2>
 
         <div className="flex flex-row md:my-1 my-3">
-          <ExternalButtons id={tokenId} hash={"asdjohasigfaiweuywe"} />
+          <ExternalButtons id={tokenId} hash={ipfsHash} />
           <Transaction eth={eth} usd={usd} />
         </div>
 

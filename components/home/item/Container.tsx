@@ -32,17 +32,17 @@ export const ItemContainer = ({
 
       <button
         disabled={totalSupply === 8000 ? true : loading ? true : false}
-        className={`${
+        className={`transform ${
           totalSupply === 8000
             ? "cursor-not-allowed text-white/60 bg-white/10 hover:text-red-500/90 hover:bg-red-500/20"
             : loading
-            ? "cursor-not-allowed text-[#888888] bg-[#888888]"
-            : `cursor-pointer text-white/60 bg-white/10 ${
+            ? "cursor-not-allowed text-white/60 bg-white/10"
+            : `cursor-pointer ${
                 connected
-                  ? "hover:text-[#69FF97] hover:bg-[#69FF97]"
-                  : "hover:text-yellow-500 hover:bg-yellow-500/10"
+                  ? "text-[#69FF97] bg-[#69FF97] md:hover:text-[#69FF97] md:hover:bg-[#69FF97] md:hover:scale-105 active:scale-100"
+                  : "text-yellow-500 bg-yellow-500 md:hover:text-yellow-500 md:hover:bg-yellow-500 md:hover:scale-105 active:scale-100"
               } `
-        } md:mt-2 mt-2 py-1 md:px-9 md:w-auto w-full rounded-lg font-semibold uppercase md:text-sm text-xs hover:bg-opacity-10 transform hover:scale-105 active:scale-100 transition duration-200`}
+        } md:mt-2 mt-2 py-1 md:px-9 md:w-auto w-full rounded-lg font-semibold uppercase md:text-sm text-xs bg-opacity-10 md:bg-opacity-100 md:hover:bg-opacity-10 transition duration-200 md:text-white/60 md:bg-white/10`}
         onClick={
           totalSupply === 8000
             ? () => alert("Maximum supply met.")
@@ -52,7 +52,7 @@ export const ItemContainer = ({
         }
       >
         {loading ? (
-          <CgSpinner className="animate-spin h-4 w-4 md:mx-1.5 mx-auto" />
+          <CgSpinner className="animate-spin md:h-5 md:w-5 h-4 w-4 md:mx-1.5 mx-auto" />
         ) : (
           <>
             {totalSupply === 8000
@@ -65,7 +65,7 @@ export const ItemContainer = ({
       </button>
 
       {!!error ? (
-        <div className="absolute -bottom-8">
+        <div className="relative px-4 py-1 mt-2 bg-red-400/10 rounded-lg md:w-auto w-full">
           <p className="text-red-400 text-center text-sm">
             <BiErrorAlt className="relative inline mr-1 bottom-[1px]" />
             Error: {error.message}
