@@ -1,5 +1,6 @@
 import { Receipt, TypeContract, TypeWeb3 } from "./../../../global.d";
 import axios from "axios";
+import { getPrice } from "../utils";
 
 export const mint: Function = async ({
   contract,
@@ -13,21 +14,7 @@ export const mint: Function = async ({
   const tokenId = Number(await contract.methods.totalSupply().call()) + 1;
   const { data } = await axios.get(`/api/requestNewToken/${tokenId}`);
   const { hash, imageHash, uri } = data;
-  let eth: string;
-
-  if (tokenId < 100) {
-    eth = "0.00";
-  } else if (tokenId < 1000) {
-    eth = "0.01";
-  } else if (tokenId < 7000) {
-    eth = "0.03";
-  } else if (tokenId < 8000) {
-    eth = "0.08";
-  } else {
-    eth = "0.08";
-  }
-
-  console.log(eth);
+  const eth: string = getPrice(tokenId);
 
   const errorValues: any = {
     "-32700": {

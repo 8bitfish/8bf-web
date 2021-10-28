@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState, useCallback, useMemo } from "react";
 import axios from "axios";
 import Image from "next/image";
 import { AttributeGroup } from "./AttributeGroup";
@@ -57,8 +57,10 @@ export const Main = ({ totalSupply }: { totalSupply: number }): JSX.Element => {
     secondary: "#4B2998",
   });
 
-  const tokenId = totalSupply === null ? totalSupply + 1 : 0;
-  let currentPrice: string = getPrice(tokenId);
+  let currentPrice: string = useMemo(
+    () => getPrice(totalSupply + 1),
+    [totalSupply]
+  );
 
   const currencies = useCallback(async () => {
     const usd: { data: { USD: number } } = await axios.get(
@@ -66,7 +68,7 @@ export const Main = ({ totalSupply }: { totalSupply: number }): JSX.Element => {
     );
 
     setCurrentUSD(usd.data.USD);
-    setCurrentEth(parseInt(currentPrice));
+    setCurrentEth(Number(currentPrice));
   }, [totalSupply]);
 
   const getToken = async (): Promise<void> => {

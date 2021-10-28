@@ -1,7 +1,6 @@
 import { Shades } from "./../../../../global";
 
 export default function pattern_6({ primary, secondary }: Shades): string {
-  console.log(primary.hue);
   const p = `<svg xmlns="http://www.w3.org/2000/svg"  width="350" height="350" viewBox="0 0 350 350">
   <defs>
     <linearGradient id="linear-gradient" x2="1" y2="1" gradientUnits="objectBoundingBox">
@@ -30,6 +29,6 @@ export default function pattern_6({ primary, secondary }: Shades): string {
     </g>
   </g>
 </svg>`;
-  console.log(p);
+
   return p;
 }

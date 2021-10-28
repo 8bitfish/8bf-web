@@ -1,6 +1,7 @@
 import React from "react";
 import { CgSpinner } from "react-icons/cg";
 import { BiErrorAlt } from "react-icons/bi";
+import { getPrice } from "../../../functions/client/utils";
 export const ItemContainer = ({
   children,
   totalSupply,
@@ -18,20 +19,7 @@ export const ItemContainer = ({
   mint: () => Promise<void>;
   connect: () => Promise<void>;
 }): JSX.Element => {
-  const tokenId = totalSupply === null ? totalSupply + 1 : 0;
-  let currentPrice: string;
-
-  if (tokenId < 100) {
-    currentPrice = "0.00";
-  } else if (tokenId < 1000) {
-    currentPrice = "0.01";
-  } else if (tokenId < 7000) {
-    currentPrice = "0.03";
-  } else if (tokenId < 8000) {
-    currentPrice = "0.08";
-  } else {
-    currentPrice = "0.08";
-  }
+  const currentPrice: string = getPrice(totalSupply + 1);
 
   return (
     <div className="relative flex flex-col md:items-center items-start">
@@ -43,22 +31,36 @@ export const ItemContainer = ({
       </div>
 
       <button
-        disabled={loading ? true : false}
+        disabled={totalSupply === 8000 ? true : loading ? true : false}
         className={`${
-          loading
-            ? "cursor-not-allowed text-[#888888] bg-[#888888] "
-            : `cursor-pointer ${
+          totalSupply === 8000
+            ? "cursor-not-allowed text-white/60 bg-white/10 hover:text-red-500/90 hover:bg-red-500/20"
+            : loading
+            ? "cursor-not-allowed text-[#888888] bg-[#888888]"
+            : `cursor-pointer text-white/60 bg-white/10 ${
                 connected
-                  ? "text-[#69FF97] bg-[#69FF97]"
-                  : "text-white/60 bg-white/10"
+                  ? "hover:text-[#69FF97] hover:bg-[#69FF97]"
+                  : "hover:text-yellow-500 hover:bg-yellow-500/10"
               } `
-        } md:mt-2 mt-2 py-1 md:px-9 md:w-auto w-full rounded-lg font-semibold uppercase md:text-sm text-xs bg-opacity-25 transition duration-200`}
-        onClick={connected ? mint : connect}
+        } md:mt-2 mt-2 py-1 md:px-9 md:w-auto w-full rounded-lg font-semibold uppercase md:text-sm text-xs hover:bg-opacity-10 transform hover:scale-105 active:scale-100 transition duration-200`}
+        onClick={
+          totalSupply === 8000
+            ? () => alert("Maximum supply met.")
+            : connected
+            ? mint
+            : connect
+        }
       >
         {loading ? (
           <CgSpinner className="animate-spin h-4 w-4 md:mx-1.5 mx-auto" />
         ) : (
-          <>{connected ? "Mint new token" : "Connect with metamask"}</>
+          <>
+            {totalSupply === 8000
+              ? "Sold out"
+              : connected
+              ? "Mint new token"
+              : "Connect with metamask"}
+          </>
         )}
       </button>
 
