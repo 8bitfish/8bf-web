@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="57.247" height="30.998" viewBox="0 0 57.247 30.998">
+  <g id="Group_110" data-name="Group 110" transform="translate(0.5 0.5)">
+    <path id="Union_106" data-name="Union 106" d="M45,30v-3.75h3.75V30Zm-3.749,0H30v-3.75h-3.75V22.5h0v-3.75H45V7.5h3.75V3.749h7.5V7.5h0V15h0V26.248h-7.5V22.5H45V30ZM30,26.248h0Zm11.249-7.5h-7.5V15h7.5V11.249H45v7.5Zm-22.5,0H7.5V15h0V11.249h0V7.5h30v3.75H30V15H22.5v3.75Zm0-3.75v0Zm-15,3.75V15H0V11.249H7.5v7.5ZM41.249,7.5H30V3.749h7.5V0H45V7.5Z" transform="translate(0 0)" fill="rgba(209,210,210,0.2)" stroke="rgba(0,0,0,0)" stroke-miterlimit="10" stroke-width="1"/>
+    <g id="Group_28" data-name="Group 28" transform="translate(22.499 7.499)">
+      <path id="Union_42" data-name="Union 42" d="M3.75,11.249H0V7.5H7.5v3.75Zm15-7.5V0H22.5V3.75Z" transform="translate(0 0)" fill="#7dd4ff" stroke="rgba(0,0,0,0)" stroke-miterlimit="10" stroke-width="1"/>
+    </g>
+    <g id="Group_30" data-name="Group 30" transform="translate(29.999 7.499)">
+      <path id="Union_44" data-name="Union 44" d="M0,11.249V7.5H3.749v3.75ZM7.5,7.5V0h3.75V7.5Z" fill="#58bbf9" stroke="rgba(0,0,0,0)" stroke-miterlimit="10" stroke-width="1"/>
+    </g>
+    <g id="Group_29" data-name="Group 29" transform="translate(18.749 11.249)">
+      <path id="Union_43" data-name="Union 43" d="M3.75,11.249H0V7.5H7.5v3.75ZM15,3.749H11.25V0h7.5V3.749Z" fill="#4fa6c9" stroke="rgba(0,0,0,0)" stroke-miterlimit="10" stroke-width="1"/>
+    </g>
+  </g>
+</svg>

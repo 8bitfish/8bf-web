@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="56.247" height="30" viewBox="0 0 56.247 30">
+  <g id="Group_131" data-name="Group 131" transform="translate(-7695 -14481.999)">
+    <g id="Group_130" data-name="Group 130" transform="translate(7695 14481.999)">
+      <g id="Group_71" data-name="Group 71" transform="translate(0)">
+        <path id="Union_107" data-name="Union 107" d="M45,30H30v-3.75H26.248V22.5h0V18.75h15V22.5H45V18.75h-3.75V15.562h-.562V15H37.5V7.5h0V3.751h3.748l-3.748,0V0H45V7.5h3.75V3.751h7.5V7.5h0v6.82h0V26.249h-7.5V30Zm0-3.75h3.751V22.5H45ZM18.748,22.5V18.75h-15V15H0V11.251H7.5V7.5H15v3.751h3.749V15h2.835V11.251H18.749V7.5H30V3.751h7.5V7.5l-3.748,0v3.751h0V15H37.5V18.75H26.248V15.984H22.5V22.5ZM7.5,13.312v0Z" fill="rgba(209,210,210,0.2)"/>
+        <path id="Union_8" data-name="Union 8" d="M22.5,15V11.249H26.25V15ZM0,7.5V3.751H3.751V7.5ZM15,3.751V0H18.75V3.751Z" transform="translate(18.748 7.5)" fill="#7dd4ff" stroke="rgba(0,0,0,0)" stroke-miterlimit="10" stroke-width="1"/>
+        <path id="Union_9" data-name="Union 9" d="M22.5,11.25V7.5H18.748V3.751H22.5V7.5h3.749V11.25ZM0,3.751V0H3.749V3.751Z" transform="translate(14.999 7.5)" fill="#4fa6c9" stroke="rgba(0,0,0,0)" stroke-miterlimit="10" stroke-width="1"/>
+        <path id="Union_10" data-name="Union 10" d="M0,7.5V0H3.751V7.5Z" transform="translate(22.498 15)" fill="#58bbf9" stroke="rgba(0,0,0,0)" stroke-miterlimit="10" stroke-width="1"/>
+      </g>
+    </g>
+  </g>
+</svg>

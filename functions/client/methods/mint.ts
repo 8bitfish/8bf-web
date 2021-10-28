@@ -1,0 +1,137 @@
+import { Receipt, TypeContract, TypeWeb3 } from "./../../../global.d";
+import axios from "axios";
+
+export const mint: Function = async ({
+  contract,
+  account,
+  web3,
+}: {
+  contract: TypeContract;
+  account: string;
+  web3: TypeWeb3;
+}) => {
+  const tokenId = Number(await contract.methods.totalSupply().call()) + 1;
+  const { data } = await axios.get(`/api/requestNewToken/${tokenId}`);
+  const { hash, imageHash, uri } = data;
+  let eth: string;
+
+  if (tokenId < 100) {
+    eth = "0.00";
+  } else if (tokenId < 1000) {
+    eth = "0.01";
+  } else if (tokenId < 7000) {
+    eth = "0.03";
+  } else if (tokenId < 8000) {
+    eth = "0.08";
+  } else {
+    eth = "0.08";
+  }
+
+  console.log(eth);
+
+  const errorValues: any = {
+    "-32700": {
+      standard: "JSON RPC 2.0",
+      message:
+        "Invalid JSON was received by the server. An error occurred on the server while parsing the JSON text.",
+    },
+    "-32600": {
+      standard: "JSON RPC 2.0",
+      message: "The JSON sent is not a valid Request object.",
+    },
+    "-32601": {
+      standard: "JSON RPC 2.0",
+      message: "The method does not exist / is not available.",
+    },
+    "-32602": {
+      standard: "JSON RPC 2.0",
+      message: "Invalid method parameter(s).",
+    },
+    "-32603": {
+      standard: "JSON RPC 2.0",
+      message: "Internal JSON-RPC error.",
+    },
+    "-32000": {
+      standard: "EIP-1474",
+      message: "Invalid input.",
+    },
+    "-32001": {
+      standard: "EIP-1474",
+      message: "Resource not found.",
+    },
+    "-32002": {
+      standard: "EIP-1474",
+      message: "Resource unavailable.",
+    },
+    "-32003": {
+      standard: "EIP-1474",
+      message: "Transaction rejected.",
+    },
+    "-32004": {
+      standard: "EIP-1474",
+      message: "Method not supported.",
+    },
+    "-32005": {
+      standard: "EIP-1474",
+      message: "Request limit exceeded.",
+    },
+    "4001": {
+      standard: "EIP-1193",
+      message: "User rejected the request.",
+    },
+    "4100": {
+      standard: "EIP-1193",
+      message:
+        "The requested account and/or method has not been authorized by the user.",
+    },
+    "4200": {
+      standard: "EIP-1193",
+      message:
+        "The requested method is not supported by this Ethereum provider.",
+    },
+    "4900": {
+      standard: "EIP-1193",
+      message: "The provider is disconnected from all chains.",
+    },
+    "4901": {
+      standard: "EIP-1193",
+      message: "The provider is disconnected from the specified chain.",
+    },
+  };
+
+  const res = await contract.methods
+    .mint(hash, uri)
+    .send({
+      from: account,
+      value: web3.utils.toWei(eth, "ether"),
+    })
+    .once("transactionHash", (hash: string) => {
+      console.log(hash);
+    })
+    .on("confirmation", (confNumber: string, receipt: object) => {
+      console.log(confNumber);
+      console.log(receipt);
+    })
+    .then(
+      (receipt: Receipt): { hash: string; receipt: Receipt; eth: string } => {
+        return { hash, receipt, eth };
+      }
+    )
+    .catch((e: { code: number; message: string }): never => {
+      console.log(e.code, errorValues[e.code.toString()].message);
+      console.log(hash);
+      axios
+        .post(`/api/removePin`, { json: hash, img: imageHash })
+        .then((r) => {
+          console.log(r);
+        })
+        .catch((e) => {
+          console.log(e);
+
+          // return { error: e.message, e: true };
+        });
+      throw new Error(errorValues[e.code.toString()].message);
+    });
+
+  return res;
+};
