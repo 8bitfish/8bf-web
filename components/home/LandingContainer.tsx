@@ -7,7 +7,7 @@ export const LandingContainer = ({
 }): JSX.Element => {
   return (
     <div className="h-full flex items-center">
-      <div className="text-white w-full flex flex-row items-center justify-center">
+      <div className="w-full flex flex-row items-center justify-center">
         {children}
       </div>
     </div>

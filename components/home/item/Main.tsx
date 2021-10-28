@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import type { MetaData, TransactionData } from "../../../global";
 import Image from "next/image";
 import { AttributeGroup } from "./AttributeGroup";
+import { ExternalButtons } from "./External";
 import { getPrice } from "../../../functions/client/utils";
 
 export const Main = ({
@@ -9,7 +10,6 @@ export const Main = ({
 }: {
   data: { token: MetaData; transaction: TransactionData };
 }): JSX.Element => {
-  const [currency, toggleEth] = useState(true);
   const { svg, tokenId, colors, pattern, ipfsHash } = token;
   const { from, transactionHash, price } = transaction;
   const { eth, usd } = price;
@@ -17,10 +17,10 @@ export const Main = ({
     <div className="relative flex flex-col md:flex-row md:items-start items-center">
       <div className="relative md:mr-4">
         <div className="md:hidden flex flex-row items-center justify-between">
-          <h2 className="md:text-[30px] text-[20px] font-bold">
+          <h2 className="md:text-[30px] text-[20px] font-bold text-white">
             8bitfish #{tokenId}
           </h2>
-          <p className="text-[10px] text-[#686868] font-semibold">
+          <p className="text-[10px] text-[#ffffff9c] font-semibold">
             {8000 - Number(tokenId)} / 8000 left at {getPrice(Number(tokenId))}Ξ
             each
           </p>
@@ -34,45 +34,50 @@ export const Main = ({
             alt="Fish"
           />
         </div>
-        {/* <p className="hidden md:inline absolute -bottom-5 text-[10px] text-white/20">
-          Fish being displayed not minted tokens.
-        </p> */}
       </div>
 
-      <div className="flex flex-col md:-mt-2 mt-0.5">
-        <h2 className="hidden md:inline md:text-[30px] text-[20px] font-bold">
+      <div className="flex flex-col md:mt-0 bg-white bg-opacity-[0.02] rounded-lg px-4 md:py-2 pb-2 md:h-[215px]">
+        <h2 className="hidden md:inline md:text-[30px] text-[20px] font-bold text-white">
           8bitfish #{tokenId}
         </h2>
-        <div className="flex flex-row my-1">
-          <div
-            className="hidden md:flex items-center justify-center px-1 cursor-pointer text-green-500 bg-green-500/10 rounded-md"
-            onClick={() => toggleEth(!currency)}
-          >
-            <p className="text-[10px] font-semibold">
-              {currency ? `${eth}Ξ` : `$${usd}`}
-            </p>
-            <div className="relative">
-              <span className="absolute left-[6.8px] -bottom-2 w-0.5 h-4 rounded-full bg-green-500/30 inline-block" />
-              <span
-                className={`transform ${
-                  !currency ? "translate-y-4" : "translate-y-0"
-                } absolute left-1.5 bottom-1.5 w-1 h-1 transition duration-200 rounded-full bg-green-500 inline-block`}
-              />
-            </div>
-          </div>
+
+        <div className="flex flex-row md:my-1 my-3">
+          <ExternalButtons id={tokenId} hash={"asdjohasigfaiweuywe"} />
+          <Transaction eth={eth} usd={usd} />
         </div>
-        <p className="md:m-0 -mt-1 md:text-[15px] text-[11.5px] text-[#808080] font-bold">
-          Mr. Number {tokenId} is a unique algorithmically generated fish
-          swimming around on the blockchain!
+
+        <p className="md:m-0 -mt-1 md:text-[15px] text-[11.5px] text-[#ffffff9c] font-bold">
+          Mr. Number {tokenId} is a completely unique algorithmically
+          "on-the-fly" generated fish swimming around on the blockchain!
         </p>
-        <div>
-          <AttributeGroup
-            hash={ipfsHash}
-            tokenId={tokenId}
-            colors={colors}
-            pattern={pattern}
-          />
-        </div>
+        <AttributeGroup
+          hash={ipfsHash}
+          tokenId={tokenId}
+          colors={colors}
+          pattern={pattern}
+        />
+      </div>
+    </div>
+  );
+};
+
+const Transaction = ({ eth, usd }: { eth: number; usd: number }) => {
+  const [currency, toggleEth] = useState(true);
+  return (
+    <div
+      className="mt-0 flex items-center justify-center md:px-1 px-2 cursor-pointer rounded-md text-[#ffffff9c] bg-white/5 border-2 border-white/10 bg-opacity-10 "
+      onClick={() => toggleEth(!currency)}
+    >
+      <p className="text-[10px] font-semibold">
+        {currency ? `${eth}Ξ` : `$${usd}`}
+      </p>
+      <div className="relative">
+        <span className="absolute md:left-[9px] left-[13px] -bottom-2 w-0.5 h-4 rounded-full bg-white/10 inline-block" />
+        <span
+          className={`${
+            !currency ? "translate-y-4" : "translate-y-0"
+          } transform  absolute md:left-2 left-3 bottom-1.5 w-1 h-1 transition duration-200 rounded-full bg-white/60 inline-block`}
+        />
       </div>
     </div>
   );

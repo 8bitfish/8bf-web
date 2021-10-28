@@ -112,11 +112,13 @@ export const Main = ({ totalSupply }: { totalSupply: number }): JSX.Element => {
   }, [currencies]);
 
   return (
-    <div className="relative flex flex-col md:flex-row md:items-start items-center h-[215px]">
+    <div className="relative flex flex-col md:flex-row md:items-start items-center">
       <div className="relative md:mr-4">
         <div className="md:hidden flex flex-row items-center justify-between">
-          <h2 className="md:text-[30px] text-[20px] font-bold">8BitFish</h2>
-          <p className="text-[10px] text-[#686868] font-semibold">
+          <h2 className="md:text-[30px] text-[20px] font-bold text-white">
+            8BitFish
+          </h2>
+          <p className="text-[10px] text-[#ffffff9c] font-semibold">
             {8000 - totalSupply} / 8000 left at {currentPrice}Ξ each
           </p>
         </div>
@@ -131,16 +133,16 @@ export const Main = ({ totalSupply }: { totalSupply: number }): JSX.Element => {
         </div>
       </div>
 
-      <div className="flex flex-col md:mt-0 mt-0.5 bg-white/5 rounded-lg px-4 py-2 md:h-[215px]">
-        <h2 className="hidden md:inline md:text-[30px] text-[20px] font-bold">
+      <div className="flex flex-col md:mt-0 mt-0.5 bg-white bg-opacity-[0.02] rounded-lg px-4 md:py-2 pb-2 md:h-[215px]">
+        <h2 className="hidden md:inline md:text-[30px] text-[20px] font-bold text-white">
           8BitFish
         </h2>
 
-        <div className="flex flex-row my-1">
+        <div className="flex flex-row md:my-1 my-3">
           <OpenSeaLink />
           <TokenFee currentEth={currentEth} currentUSD={currentUSD} />
         </div>
-        <p className="md:m-0 -mt-1 md:text-[15px] text-[11.5px] text-[#808080] font-bold">
+        <p className="md:m-0 -mt-1 md:text-[15px] text-[11.5px] text-[#ffffff9c] font-bold">
           Completely randomized algorithmically generated 8-bit fish with
           exactly <span style={{ color: token.primary }}>2251799813685248</span>{" "}
           <span style={{ color: token.secondary }}>combinations</span>.
@@ -156,16 +158,16 @@ export const Main = ({ totalSupply }: { totalSupply: number }): JSX.Element => {
 };
 
 const OpenSeaLink = (): JSX.Element => (
-  <div className="hidden relative md:ml-0 mt-0 md:flex md:items-center md:justify-center md:px-1 md:cursor-pointer md:rounded-md px-2 text-[#2081E2] bg-[#2081E2] bg-opacity-10">
+  <div className="relative mr-1 mt-0 flex items-center md:justify-center cursor-pointer rounded-md md:px-1 px-2 text-[#ffffff9c] bg-white/5 border-2 border-white/10 bg-opacity-10 hover:text-[#ffffffc6] hover:border-white/30 group">
     <a
       href="https://opensea.io/assets/CONTRACT_ADDRESS/"
       className="text-[10px] font-semibold"
     >
       opensea
-      {/* <IoMdArrowRoundForward
-                  className="transform group-hover:-rotate-45 rotate-0
-              inline relative bottom-[1px] transition duration-150"
-                /> */}
+      <IoMdArrowRoundForward
+        className="absolute transform group-hover:-rotate-45
+            inline -top-1 -right-1 transition duration-150"
+      />
     </a>
   </div>
 );
@@ -177,11 +179,11 @@ const TokenFee = ({
   currentEth: number;
   currentUSD: number;
 }): JSX.Element => {
-  const [currency, setCurrency] = useState<boolean>(false);
+  const [currency, setCurrency] = useState<boolean>(true);
 
   return (
     <div
-      className="hidden md:ml-1 md:flex md:items-center md:justify-center md:px-1 md:cursor-pointer md:text-green-500 md:bg-green-500/10 md:rounded-md"
+      className="mt-0 flex items-center justify-center md:px-1 px-2 cursor-pointer rounded-md text-[#ffffff9c] bg-white/5 border-2 border-white/10 bg-opacity-10"
       onClick={() => setCurrency(!currency)}
     >
       <p className="text-[10px] font-semibold">
@@ -191,11 +193,11 @@ const TokenFee = ({
           : `$${Math.floor(currentEth * currentUSD)}`}
       </p>
       <div className="relative">
-        <span className="absolute left-[6.8px] -bottom-2 w-0.5 h-4 rounded-full bg-green-500/30 inline-block" />
+        <span className="absolute md:left-[9px] left-[13px] -bottom-2 w-0.5 h-4 rounded-full bg-white/10 inline-block" />
         <span
           className={`${
             !currency ? "translate-y-4" : "translate-y-0"
-          } transform  absolute left-1.5 bottom-1.5 w-1 h-1 transition duration-200 rounded-full bg-green-500 inline-block`}
+          } transform  absolute md:left-2 left-3 bottom-1.5 w-1 h-1 transition duration-200 rounded-full bg-white/60 inline-block`}
         />
       </div>
     </div>

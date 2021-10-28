@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { IoMdArrowRoundForward } from "react-icons/io";
 
 export const ExternalButtons = ({
@@ -13,7 +13,7 @@ export const ExternalButtons = ({
     { opensea: false, endpoint: hash },
   ];
   return (
-    <div className="flex flex-row items-center mt-2.5">
+    <div className="flex flex-row items-center">
       {buttons.map((b, i) => (
         <External key={i} os={b.opensea} ep={b.endpoint} />
       ))}
@@ -22,28 +22,20 @@ export const ExternalButtons = ({
 };
 
 const External = ({ os, ep }: { os: boolean; ep: string }) => {
-  const [isHovered, setHovered] = useState(false);
   return (
-    <div className={`relative md:mt-0 -mt-2 ${os ? null : "ml-2"}`}>
+    <div className="relative mr-1 mt-0 flex items-center md:justify-center cursor-pointer rounded-md md:px-1 px-2 text-[#ffffff9c] bg-white/5 border-2 border-white/10 bg-opacity-10 hover:text-[#ffffffc6] hover:border-white/30 group">
       <a
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
         href={
           os
             ? `https://opensea.io/assets/CONTRACT_ADDRESS/${ep}`
             : `https://gateway.pinata.cloud/ipfs/${ep}`
         }
-        target="_blank"
-        rel="noopener noreferrer"
-        className={`filter hover:brightness-125 ${
-          os ? "text-[#2081E2]" : "text-[#FF009E]"
-        } rounded-md leading-0 uppercase font-bold text-[9px] transition duration-200`}
+        className="text-[10px] font-semibold"
       >
-        {os ? "opensea" : "ipfs"}{" "}
+        {os ? "opensea" : "ipfs"}
         <IoMdArrowRoundForward
-          className={`transform ${
-            isHovered ? "-rotate-45" : "rotate-0"
-          } inline relative bottom-[1px] transition duration-150`}
+          className="absolute transform group-hover:-rotate-45
+            inline -top-1 -right-1 transition duration-150"
         />
       </a>
     </div>

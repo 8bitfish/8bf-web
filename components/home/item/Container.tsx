@@ -35,7 +35,7 @@ export const ItemContainer = ({
 
   return (
     <div className="relative flex flex-col md:items-center items-start">
-      <p className="hidden md:inline text-[10px] text-[#686868] font-semibold md:mb-0 mb-2">
+      <p className="hidden md:inline text-[10px] text-[#ffffff9c] font-semibold md:mb-0 mb-2">
         {8000 - totalSupply} / 8000 left at {currentPrice}Ξ each
       </p>
       <div className="md:px-3 md:py-2 rounded-xl md:w-[41.5rem] w-[80vw] border-[0px] md:border-[0px] border-[#2A2A2A]">
@@ -50,15 +50,15 @@ export const ItemContainer = ({
             : `cursor-pointer ${
                 connected
                   ? "text-[#69FF97] bg-[#69FF97]"
-                  : "text-yellow-300 bg-yellow-300"
+                  : "text-white/60 bg-white/10"
               } `
-        } md:mt-5 mt-2 py-1 md:px-9 md:w-auto w-full rounded-md font-semibold uppercase md:text-sm text-xs bg-opacity-25 transition duration-200`}
+        } md:mt-2 mt-2 py-1 md:px-9 md:w-auto w-full rounded-lg font-semibold uppercase md:text-sm text-xs bg-opacity-25 transition duration-200`}
         onClick={connected ? mint : connect}
       >
         {loading ? (
           <CgSpinner className="animate-spin h-4 w-4 md:mx-1.5 mx-auto" />
         ) : (
-          <>{connected ? "Mint" : "Connect with metamask"}</>
+          <>{connected ? "Mint new token" : "Connect with metamask"}</>
         )}
       </button>
 

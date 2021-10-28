@@ -6,7 +6,7 @@ import { Twitter } from "./icons/Twitter";
 
 export const NavigationIcons = (): JSX.Element => {
   const globalClass =
-    "fill-current text-[#474747] transform md:scale-100 scale-75 transition duration-200";
+    "fill-current text-[#9ca3af] transform md:scale-100 scale-75 transition duration-200";
   const icons: Array<{ link: string; icon: JSX.Element }> = [
     {
       link: "/location",
