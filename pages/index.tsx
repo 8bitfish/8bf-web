@@ -18,6 +18,7 @@ import {
 } from "../components/home";
 import { Navigation } from "../components/Navigation/Navigation";
 import { Footer } from "../components/Footer";
+import Seo from "../components/Seo";
 
 const Home: NextPage = () => {
   const [connected, setConnected] = useState<boolean>(false);
@@ -70,7 +71,7 @@ const Home: NextPage = () => {
   }) => {
     const url = `https://gateway.pinata.cloud/ipfs/${hash}`;
     const { data } = await axios.get(url);
-    const { attributes, image } = data;
+    const { attributes, image, description } = data;
     const [pattern, primary, secondary]: Array<{
       trait_type: string;
       value: string;
@@ -83,6 +84,7 @@ const Home: NextPage = () => {
       ipfsHash: hash,
       tokenId: receipt.events.Transfer.returnValues.tokenId,
       svg: svg.data,
+      description: description,
       pattern: pattern.value,
       colors: {
         primary: primary.value,
@@ -128,10 +130,9 @@ const Home: NextPage = () => {
     }
   };
 
-  // console.log(Array.from({ length: Number(totalSupply) }, (_, i) => i + 1));
-
   return (
     <MainContainer>
+      <Seo />
       <Navigation connected={connected} />
       <LandingContainer>
         {meta !== null && trans !== null ? (

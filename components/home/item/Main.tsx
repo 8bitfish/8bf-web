@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+// import axios from "axios";
 import type { MetaData, TransactionData } from "../../../global";
 import Image from "next/image";
 import { AttributeGroup } from "./AttributeGroup";
@@ -10,9 +11,29 @@ export const Main = ({
 }: {
   data: { token: MetaData; transaction: TransactionData };
 }): JSX.Element => {
-  const { svg, tokenId, colors, pattern, ipfsHash } = token;
+  const { svg, tokenId, colors, pattern, ipfsHash, description } = token;
   const { from, transactionHash, price } = transaction;
   const { eth, usd } = price;
+
+  // const useWebHook = async (): Promise<void> => {
+  //   await axios
+  //     .post("/api/webhook", {
+  //       hash: ipfsHash,
+  //       tokenId: tokenId,
+  //       account: from,
+  //     })
+  //     .then((r) => {
+  //       console.log(r);
+  //     })
+  //     .catch((e) => {
+  //       console.log(e);
+  //     });
+  // };
+
+  // useEffect(() => {
+  //   useWebHook();
+  // }, []);
+
   return (
     <div className="relative flex flex-col md:flex-row md:items-start items-center">
       <div className="relative md:mr-4">
@@ -27,7 +48,7 @@ export const Main = ({
         </div>
         <div className="md:w-[215px] md:h-[215px] w-[80vw] overflow-hidden rounded-md">
           <Image
-            src={`data:image/svg+xml;utf8,${encodeURIComponent(token.svg)}`}
+            src={`data:image/svg+xml;utf8,${encodeURIComponent(svg)}`}
             width={215}
             height={215}
             layout="responsive"
@@ -47,8 +68,7 @@ export const Main = ({
         </div>
 
         <p className="md:m-0 -mt-1 md:text-[15px] text-[11.5px] text-[#ffffff9c] font-bold">
-          Mr. Number {tokenId} is a completely unique algorithmically
-          "on-the-fly" generated fish swimming around on the blockchain!
+          {description}
         </p>
         <AttributeGroup
           hash={ipfsHash}

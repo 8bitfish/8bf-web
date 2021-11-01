@@ -5,15 +5,15 @@ import { tokenURI } from "./tokenURI";
 import { Shades } from "../../global";
 
 export const tokenData = async () => {
-  const colors = (): string => {
+  const getColor = (): string => {
     const hex: string = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
     if (hex.length < 7) {
-      return colors();
+      return getColor();
     }
     return hex;
   };
 
-  const { primary, secondary }: Shades = getShades([colors(), colors()]);
+  const { primary, secondary }: Shades = getShades([getColor(), getColor()]);
   const keys = Object.keys(p);
   const pattern = keys[Math.floor(Math.random() * keys.length)];
   return {

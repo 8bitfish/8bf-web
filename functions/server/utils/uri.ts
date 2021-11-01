@@ -27,7 +27,8 @@ export async function generateURI({
   const meta: URI = {
     pinataMetadata: { name: `8BF #${tokenId}` },
     pinataContent: {
-      description: `Mr. Number ${tokenId} is a unique algorithmically generated fish swimming around on the blockchain!`,
+      description: `Mr. Number ${tokenId} is a completely unique algorithmically
+      "on-the-fly" generated fish swimming around on the blockchain!`,
       image,
       name: `8BitFish #${tokenId}`,
       attributes: [

@@ -8500,7 +8500,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.3",
-  "updatedAt": "2021-10-09T19:52:01.950Z",
+  "updatedAt": "2021-10-31T20:15:33.417Z",
   "devdoc": {
     "details": "Collection of functions related to the address type",
     "methods": {}

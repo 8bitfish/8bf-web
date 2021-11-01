@@ -15,19 +15,19 @@ export const NavigationIcons = (): JSX.Element => {
       ),
     },
     {
-      link: "/location",
+      link: "https://discord.gg/dYfUayrJD2",
       icon: (
         <Discord key={1} className={`${globalClass} hover:text-[#6D82CF]`} />
       ),
     },
     {
-      link: "/location",
+      link: "https://github.com/paul-bokelman/8bitfish.com",
       icon: (
         <Github key={2} className={`${globalClass} hover:text-[#ffffff]`} />
       ),
     },
     {
-      link: "/location",
+      link: "https://twitter.com/8bitfish_crypto",
       icon: (
         <Twitter key={3} className={`${globalClass} hover:text-[#1EA1F1]`} />
       ),

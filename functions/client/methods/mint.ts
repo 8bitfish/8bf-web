@@ -12,6 +12,9 @@ export const mint: Function = async ({
   web3: TypeWeb3;
 }) => {
   const tokenId = Number(await contract.methods.totalSupply().call()) + 1;
+  if (tokenId > 8000) {
+    throw new Error("Token ID exceeds 8000.");
+  }
   const { data } = await axios.get(`/api/requestNewToken/${tokenId}`);
   const { hash, imageHash, uri } = data;
   const eth: string = getPrice(tokenId);
@@ -100,22 +103,22 @@ export const mint: Function = async ({
       console.log(receipt);
     })
     .then(
-      (receipt: Receipt): { hash: string; receipt: Receipt; eth: string } => {
+      async (
+        receipt: Receipt
+      ): Promise<{ hash: string; receipt: Receipt; eth: string }> => {
         return { hash, receipt, eth };
       }
     )
-    .catch((e: { code: number; message: string }): never => {
+    .catch(async (e: { code: number; message: string }): Promise<never> => {
       console.log(e.code, errorValues[e.code.toString()].message);
       console.log(hash);
-      axios
+      await axios
         .post(`/api/removePin`, { json: hash, img: imageHash })
         .then((r) => {
           console.log(r);
         })
         .catch((e) => {
           console.log(e);
-
-          // return { error: e.message, e: true };
         });
       throw new Error(errorValues[e.code.toString()].message);
     });

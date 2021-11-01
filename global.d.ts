@@ -1,4 +1,5 @@
 export type Receipt = {
+  from: string;
   transactionHash: string;
   gasUsed: number;
   events: { Transfer: { returnValues: { tokenId: string } } };
@@ -25,6 +26,7 @@ export interface MetaData {
   ipfsHash: string;
   tokenId: string;
   svg: string;
+  description: string;
   pattern: string;
   colors: {
     primary: string;
