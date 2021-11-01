@@ -97,7 +97,12 @@ const Home: NextPage = () => {
       price: {
         gas: receipt.gasUsed,
         eth: Number(eth) + receipt.gasUsed / Math.pow(10, 9),
-        usd: usd.data.USD * Number(eth) + receipt.gasUsed / Math.pow(10, 9),
+        usd:
+          Math.ceil(
+            usd.data.USD *
+              (Number(eth) + receipt.gasUsed / Math.pow(10, 9)) *
+              100
+          ) / 100,
       },
     });
 

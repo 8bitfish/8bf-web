@@ -192,7 +192,7 @@ const TokenFee = ({
         token fee:{" "}
         {currency
           ? `${currentEth}Ξ`
-          : `$${Math.floor(currentEth * currentUSD)}`}
+          : `$${Math.ceil((currentUSD * currentEth * 100) / 100)}`}
       </p>
       <div className="relative">
         <span className="absolute md:left-[9px] left-[13px] -bottom-2 w-0.5 h-4 rounded-full bg-white/10 inline-block" />
