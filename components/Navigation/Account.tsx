@@ -12,7 +12,7 @@ export const Account = ({
   return (
     <div
       className={`${
-        connected ? "bg-green-500/20" : "bg-red-500/20"
+        connected ? "bg-green-500/10" : "bg-red-500/10"
       } rounded-full`}
     >
       <div className="relative flex md:flex-row md:items-center md:pl-2 md:pr-3 md:py-0">
