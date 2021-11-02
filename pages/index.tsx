@@ -8,7 +8,7 @@ import type {
   TypeContract,
   TypeWeb3,
 } from "../global";
-import { mint, withdraw } from "../functions/client/methods";
+import { mint } from "../functions/client/methods";
 import { loadWeb3, loadBlockchainData } from "../functions/client/chain";
 import {
   LandingContainer,
@@ -175,7 +175,6 @@ const Home: NextPage = () => {
             error={error}
           />
         )}
-        {/* <button onClick={() => withdraw({ contract, account })}>withdraw</button> */}
       </LandingContainer>
 
       <Footer />
