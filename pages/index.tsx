@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import type { NextPage } from "next";
 import type {
@@ -19,6 +19,8 @@ import {
 import { Navigation } from "../components/Navigation/Navigation";
 import { Footer } from "../components/Footer";
 import Seo from "../components/Seo";
+
+declare let window: any;
 
 const Home: NextPage = () => {
   const [connected, setConnected] = useState<boolean>(false);
@@ -134,6 +136,16 @@ const Home: NextPage = () => {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    window.ethereum.on("accountsChanged", (accounts: string[]) => {
+      connect();
+    });
+
+    window.ethereum.on("networkChanged", (networkId: string) => {
+      connect();
+    });
+  }, []);
 
   return (
     <MainContainer>
