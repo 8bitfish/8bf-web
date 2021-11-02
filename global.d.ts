@@ -12,7 +12,6 @@ export interface TypeContract {
       hash: string,
       uri: string
     ) => { send: ({ from: string, value: string }) => any };
-    withdrawFunds: () => { send: ({ from: string }) => any };
   };
 }
 

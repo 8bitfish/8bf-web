@@ -40,7 +40,6 @@ export async function newToken({
   try {
     await fs.promises.writeFile(`${assetDir}/#${tokenId}.svg`, svg);
   } catch (e) {
-    console.log(e);
     throw e;
   }
 
