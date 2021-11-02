@@ -3,8 +3,10 @@ import { Account } from "./Account";
 import { NavigationIcons } from "./Icons";
 export const Navigation = ({
   connected,
+  account,
 }: {
   connected: boolean;
+  account: string | null;
 }): JSX.Element => {
   return (
     <Container>
@@ -12,7 +14,7 @@ export const Navigation = ({
         <NavigationIcons />
       </Left>
       <Right>
-        <Account connected={connected} />
+        <Account connected={connected} account={account} />
       </Right>
     </Container>
   );

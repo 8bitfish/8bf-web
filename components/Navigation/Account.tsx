@@ -2,7 +2,13 @@ import React from "react";
 import { VscCircleOutline } from "react-icons/vsc";
 import { RiRadioButtonLine } from "react-icons/ri";
 
-export const Account = ({ connected }: { connected: boolean }): JSX.Element => {
+export const Account = ({
+  connected,
+  account,
+}: {
+  connected: boolean;
+  account: string | null;
+}): JSX.Element => {
   return (
     <div
       className={`${
@@ -21,7 +27,11 @@ export const Account = ({ connected }: { connected: boolean }): JSX.Element => {
             connected ? "text-green-500" : "text-red-500"
           } md:inline hidden`}
         >
-          {connected ? "connected" : "disconnected"}
+          {connected
+            ? account !== null
+              ? account
+              : "connected"
+            : "disconnected"}
         </span>
       </div>
     </div>

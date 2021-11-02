@@ -35,7 +35,8 @@ export const mint: Function = async ({
     },
     "-32602": {
       standard: "JSON RPC 2.0",
-      message: "Invalid method parameter(s).",
+      message:
+        "Invalid method parameter(s). Did you switch you address without refreshing?",
     },
     "-32603": {
       standard: "JSON RPC 2.0",

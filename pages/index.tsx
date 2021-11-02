@@ -138,7 +138,7 @@ const Home: NextPage = () => {
   return (
     <MainContainer>
       <Seo />
-      <Navigation connected={connected} />
+      <Navigation connected={connected} account={account} />
       <LandingContainer>
         {meta !== null && trans !== null ? (
           <Item
