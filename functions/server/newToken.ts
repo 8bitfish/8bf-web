@@ -3,8 +3,13 @@ import { getShades } from "./utils/shades";
 import { p } from "./assets/patterns/patternExport";
 import { tokenURI } from "./tokenURI";
 import { Shades } from "../../global";
+import { verifyExistence } from "./firebase";
 
-export const tokenData = async () => {
+export const tokenData = async (): Promise<{
+  svg: string;
+  pattern: string;
+  colors: Shades;
+}> => {
   const getColor = (): string => {
     const hex: string = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
     if (hex.length < 7) {
@@ -16,6 +21,17 @@ export const tokenData = async () => {
   const { primary, secondary }: Shades = getShades([getColor(), getColor()]);
   const keys = Object.keys(p);
   const pattern = keys[Math.floor(Math.random() * keys.length)];
+  const exists = await verifyExistence({
+    pattern,
+    primary: primary.base,
+    secondary: secondary.base,
+  });
+
+  console.log(exists);
+  if (!exists) {
+    return tokenData();
+  }
+
   return {
     svg: p[pattern]({ primary, secondary }),
     pattern,

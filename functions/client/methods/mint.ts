@@ -111,7 +111,7 @@ export const mint: Function = async ({
       }
     )
     .catch(async (e: { code: number; message: string }): Promise<never> => {
-      await await axios
+      await axios
         .post(`/api/removePin`, { json: hash, img: imageHash })
         .then((r) => {
           console.log(r);
