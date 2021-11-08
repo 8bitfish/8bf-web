@@ -1,4 +1,4 @@
-import { Shades } from "../../../global";
+import { Colors } from "../../../global";
 
 interface URI {
   pinataMetadata: { name: string };
@@ -21,7 +21,7 @@ export async function generateURI({
     tokenId: string | string[];
     image: string;
     pattern: string;
-    colors: Shades;
+    colors: Colors;
   };
 }): Promise<{ meta: string }> {
   const meta: URI = {

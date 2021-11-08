@@ -1,4 +1,4 @@
-import { Shades } from "../../../../global";
+import { Colors } from "../../../../global";
 
 import plain from "./plain";
 import pattern_1 from "./p1";
@@ -10,7 +10,7 @@ import pattern_6 from "./p6";
 import pattern_7 from "./p7";
 
 export const p: {
-  [key: string]: ({ primary, secondary }: Shades) => string;
+  [key: string]: ({ primary, secondary }: Colors) => string;
 } = {
   plain,
   pattern_1,

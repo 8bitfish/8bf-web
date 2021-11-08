@@ -135,8 +135,8 @@ export const Main = ({ totalSupply }: { totalSupply: number }): JSX.Element => {
         </div>
       </div>
 
-      <div className="flex flex-col md:mt-0 mt-0.5 bg-white bg-opacity-[0.02] rounded-lg px-4 md:py-2 pb-2 md:h-[215px]">
-        <h2 className="hidden md:inline md:text-[30px] text-[20px] font-bold text-white">
+      <div className="flex flex-col justify-center md:mt-0 mt-0.5 bg-white bg-opacity-[0.02] rounded-lg px-4 md:py-2 pb-2 md:h-[215px]">
+        <h2 className="hidden md:inline -mt-2 md:text-[30px] text-[20px] font-bold text-white">
           8BitFish
         </h2>
 
@@ -145,8 +145,8 @@ export const Main = ({ totalSupply }: { totalSupply: number }): JSX.Element => {
           <TokenFee currentEth={currentEth} currentUSD={currentUSD} />
         </div>
         <p className="md:m-0 -mt-1 md:text-[15px] text-[11.5px] text-[#ffffff9c] font-bold">
-          Completely randomized algorithmically generated 8-bit fish with
-          exactly <span style={{ color: token.primary }}>2251799813685248</span>{" "}
+          Completely randomized algorithmically generated 8-bit fish with over{" "}
+          <span style={{ color: token.primary }}>2 quadrillion</span>{" "}
           <span style={{ color: token.secondary }}>combinations</span>.
         </p>
         <AttributeGroup

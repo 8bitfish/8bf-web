@@ -1,6 +1,6 @@
-import { Shades } from "../../../../global";
+import { Colors } from "../../../../global";
 
-export default function pattern_2({ primary, secondary }: Shades): string {
+export default function pattern_2({ primary, secondary }: Colors): string {
   const p = `<svg xmlns="http://www.w3.org/2000/svg"  width="350" height="350" viewBox="0 0 350 350">
   <defs>
     <linearGradient id="linear-gradient" x2="1" y2="1" gradientUnits="objectBoundingBox">

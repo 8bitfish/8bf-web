@@ -1,5 +1,5 @@
 import convert from "color-convert";
-import { Shade, Shades } from "../../../global";
+import { Color, Colors } from "../../../global";
 
 const generateShade = (color: string, percent: number): string => {
   const [r, g, b]: number[] = [
@@ -26,8 +26,8 @@ function getHue(hex: string, degree: number) {
   return `#${hexR}`;
 }
 
-export const getShades = ([p, s]: [string, string]): Shades => {
-  const [primary, secondary]: Shade[] = [p, s].map((c) => {
+export const getShades = ([p, s]: [string, string]): Colors => {
+  const [primary, secondary]: Color[] = [p, s].map((c) => {
     const hue: string = getHue(c, 20);
 
     return {

@@ -1,4 +1,4 @@
-import { Shades } from "../../global";
+import { Colors } from "../../global";
 import { generateURI } from "./utils/uri";
 import { pin } from "./ipfs/pin";
 
@@ -9,7 +9,7 @@ export async function tokenURI({
   keys,
 }: {
   tokenId: string | string[];
-  colors: Shades;
+  colors: Colors;
   pattern: string;
   keys: { [key: string]: string | undefined };
 }) {

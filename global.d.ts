@@ -43,7 +43,7 @@ export interface TransactionData {
   };
 }
 
-export type Shade = {
+export type Color = {
   base: string;
   light: string;
   maxLight: string;
@@ -57,7 +57,7 @@ export type Shade = {
   };
 };
 
-export interface Shades {
-  primary: Shade;
-  secondary: Shade;
+export interface Colors {
+  primary: Color;
+  secondary: Color;
 }
