@@ -27,7 +27,6 @@ export const tokenData = async (): Promise<{
     secondary: secondary.base,
   });
 
-  console.log(exists);
   if (!exists) {
     return tokenData();
   }

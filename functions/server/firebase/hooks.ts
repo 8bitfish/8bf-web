@@ -29,7 +29,6 @@ export const verifyExistence = async ({
   pattern,
 }: Token) => {
   const exists = await tokenExists({ primary, secondary, pattern });
-  console.log("token exists?", exists);
   if (!exists) {
     try {
       const docRef = await addDoc(collection(db, "tokens"), {
@@ -37,10 +36,9 @@ export const verifyExistence = async ({
         secondary,
         pattern,
       });
-      console.log("Document written with ID: ", docRef.id);
       return true;
     } catch (e) {
-      console.error("Error adding document: ", e);
+      throw e;
     }
   }
   return false;

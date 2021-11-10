@@ -112,4 +112,10 @@ Below is a graphical representation of the `hue` object on all 8 patterns.
 
 ![patterns](https://user-images.githubusercontent.com/72945168/140625246-fb3fe7db-b2bb-42e2-8ad0-179e36d13e62.png)
 
+#### Token generator
+
+You can generate your own tokens locally by setting up the [official 8bitfish token generator](https://github.com/8bitfish/token-generator).
+
+With the generator you can generate unlimited combinations and preview what you might see or get in the actual collection on the mainnet.
+
 <sub>Like this project? Support me with ethereum: 0xD4c6325E42fac0625B25C0d4DB40823870986609</sub>

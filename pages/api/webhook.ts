@@ -44,7 +44,7 @@ export default async function handler(
       console.log(info);
     })
     .catch(function (err) {
-      console.log(err);
+      throw err;
     });
 
   data.append("file", fs.createReadStream(`${p}/#${tokenId}.png`));
