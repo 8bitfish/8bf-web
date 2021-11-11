@@ -1,5 +1,6 @@
 import axios from "axios";
 import fs from "fs";
+// @ts-ignore
 import FormData from "form-data";
 
 export async function file({
@@ -8,8 +9,8 @@ export async function file({
   pinataSecretApiKey,
 }: {
   tokenId: string | string[];
-  pinataApiKey: string | undefined;
-  pinataSecretApiKey: string | undefined;
+  pinataApiKey: string;
+  pinataSecretApiKey: string;
 }): Promise<{ image: string; imageHash: string }> {
   const url = "https://api.pinata.cloud/pinning/pinFileToIPFS";
   const gateway = "https://gateway.pinata.cloud/ipfs/";

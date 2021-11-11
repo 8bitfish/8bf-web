@@ -15,25 +15,6 @@ export const Main = ({
   const { from, transactionHash, price } = transaction;
   const { eth, usd } = price;
 
-  // const useWebHook = async (): Promise<void> => {
-  //   await axios
-  //     .post("/api/webhook", {
-  //       hash: ipfsHash,
-  //       tokenId: tokenId,
-  //       account: from,
-  //     })
-  //     .then((r) => {
-  //       console.log(r);
-  //     })
-  //     .catch((e) => {
-  //       console.log(e);
-  //     });
-  // };
-
-  // useEffect(() => {
-  //   useWebHook();
-  // }, []);
-
   return (
     <div className="relative flex flex-col md:flex-row md:items-start items-center">
       <div className="relative md:mr-4">

@@ -5,6 +5,8 @@ import { TypeContract, TypeWeb3 } from "../../global";
 
 declare let window: any;
 
+type Networks = "4" | "5777" | "80001";
+
 const loadWeb3 = async () => {
   if (window.ethereum) {
     window.web3 = new Web3(window.ethereum);
@@ -25,7 +27,7 @@ const loadBlockchainData = async (): Promise<{
 }> => {
   const { web3, ethereum } = window;
   const accounts = await ethereum.request({ method: "eth_accounts" });
-  const networkId = await web3.eth.net.getId();
+  const networkId: Networks = await web3.eth.net.getId();
   const networkData = BitFish.networks[networkId];
   if (networkData) {
     const { abi } = BitFish;

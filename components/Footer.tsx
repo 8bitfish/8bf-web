@@ -4,6 +4,16 @@ export const Footer = (): JSX.Element => {
   return (
     <div className="w-full py-3 text-center">
       <p className="text-white/40 font-semibold text-xs">
+        {/* Want to give feedback?{" "}
+        <a
+          href="https://github.com/8bitfish/8bitfishnft.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-white/80 hover:text-white transition duration-200"
+        >
+          Open an issue
+        </a>{" "}
+        |  */}
         Built and developed by{" "}
         <a
           href="https://github.com/paul-bokelman"

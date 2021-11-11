@@ -39,10 +39,8 @@ export const tokenData = async (): Promise<{
 };
 export async function newToken({
   tokenId,
-  keys,
 }: {
   tokenId: string | string[];
-  keys: { [key: string]: string | undefined };
 }): Promise<{ hash: string; imageHash: string; uri: string }> {
   const {
     svg,
@@ -66,7 +64,6 @@ export async function newToken({
     tokenId,
     colors,
     pattern,
-    keys,
   });
 
   return { hash, imageHash, uri };

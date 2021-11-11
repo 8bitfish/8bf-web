@@ -6,14 +6,25 @@ export async function tokenURI({
   tokenId,
   colors,
   pattern,
-  keys,
 }: {
   tokenId: string | string[];
   colors: Colors;
   pattern: string;
-  keys: { [key: string]: string | undefined };
 }) {
-  const { pinataApiKey, pinataSecretApiKey } = keys;
+  let pinataApiKey: string;
+  let pinataSecretApiKey: string;
+
+  if (process.env.NEXT_PUBLIC_PINATA_API_KEY) {
+    pinataApiKey = process.env.NEXT_PUBLIC_PINATA_API_KEY;
+  } else {
+    throw new Error("PINATA_API_KEY environment variable is not set");
+  }
+
+  if (process.env.NEXT_PUBLIC_PINATA_SECRET_API_KEY) {
+    pinataSecretApiKey = process.env.NEXT_PUBLIC_PINATA_SECRET_API_KEY;
+  } else {
+    throw new Error("PINATA_SECRET_API_KEY environment variable is not set");
+  }
 
   const { image, imageHash }: { image: string; imageHash: string } =
     await pin.file({

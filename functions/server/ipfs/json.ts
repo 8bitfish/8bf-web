@@ -10,8 +10,8 @@ export async function json({
 }: {
   tokenId: string | string[];
   meta: MetaData | any;
-  pinataApiKey: string | undefined;
-  pinataSecretApiKey: string | undefined;
+  pinataApiKey: string;
+  pinataSecretApiKey: string;
 }): Promise<{ hash: string; uri: string }> {
   const url = "https://api.pinata.cloud/pinning/pinJSONToIPFS";
   const gateway = "https://gateway.pinata.cloud/ipfs/";
