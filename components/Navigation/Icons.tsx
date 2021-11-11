@@ -20,12 +20,12 @@ export const NavigationIcons = (): JSX.Element => {
         <Discord key={1} className={`${globalClass} hover:text-[#6D82CF]`} />
       ),
     },
-    // {
-    //   link: "https://github.com/paul-bokelman/8bitfish.com",
-    //   icon: (
-    //     <Github key={2} className={`${globalClass} hover:text-[#ffffff]`} />
-    //   ),
-    // },
+    {
+      link: "https://github.com/8bitfish",
+      icon: (
+        <Github key={2} className={`${globalClass} hover:text-[#ffffff]`} />
+      ),
+    },
     {
       link: "https://twitter.com/8bitfish_crypto",
       icon: (
