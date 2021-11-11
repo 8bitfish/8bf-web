@@ -37,7 +37,7 @@ The fish then would be able to interact with each other and noticed imperfect co
 
 There wasn't much time to develop a solution to the problem, but the fish were able to find a backdoor in the simulation and escaped to the decentralized ethereum blockchain to seek refuge. At the end of it all, only 8000 fish survived the termination protocol and remain on the ethereum blockchain where they once again live in prosperity. -->
 
-### Token architecture
+## Token architecture
 
 Lets address the elephant in the room, how the hell are there over 2 quadrillion unique combinations of fishes? To understand this, we need to understand the anatomy each token.
 
@@ -48,7 +48,7 @@ Each generated token has 3 generated properties:
   - Secondary: The secondary color of the fish.
 - [Patterns](#patterns): The hue pattern overlaying the fish.
 
-#### Colors
+### Colors
 
 Contrary to traditional methods of generating randomized assets which uses a set of pre-selected images then combines them into a single image, each token has a primary and secondary color that are applied directly to their respective areas of the svg. Both of these colors are randomly generated hex colors then expanded into the `Color` type.
 
@@ -87,7 +87,7 @@ Below is a graphical representation of the `Colors` type on a `plain` pattern.
 
 > **_NOTE:_** The `hue` value from each color are not listed because the `plain` pattern doesn't require the hue values, check out [patterns](#patterns) to see how `hue` is used.
 
-#### Patterns
+### Patterns
 
 There are 8 patterns that can be applied to each generated token (see below).
 
@@ -112,7 +112,23 @@ Below is a graphical representation of the `hue` object on all 8 patterns.
 
 ![patterns](https://user-images.githubusercontent.com/72945168/140625246-fb3fe7db-b2bb-42e2-8ad0-179e36d13e62.png)
 
-#### Token generator
+## Roadmap
+
+### Launch and reveal 8bitfish
+
+Deploy the 8bitfish contract to the ethereum blockchain and reveal the 8bitfish family.
+
+Date of completion: TBD
+
+### Mint 8000 tokens
+
+Mint all 8000 tokens to the collectors of the 8bitfish family.
+
+Date of completion: TBD
+
+### More milestones coming soon...
+
+## Token generator
 
 You can generate your own tokens locally by setting up the [official 8bitfish token generator](https://github.com/8bitfish/token-generator).
 
