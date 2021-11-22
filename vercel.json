@@ -1,7 +1,0 @@
-{
-  "functions": {
-    "pages/api/requestNewToken/[tokenId].ts": {
-      "includeFiles": "_files/**"
-    }
-  }
-}

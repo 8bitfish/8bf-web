@@ -6,10 +6,12 @@ export async function tokenURI({
   tokenId,
   colors,
   pattern,
+  svg,
 }: {
   tokenId: string | string[];
   colors: Colors;
   pattern: string;
+  svg: Buffer;
 }) {
   let pinataApiKey: string;
   let pinataSecretApiKey: string;
@@ -31,6 +33,7 @@ export async function tokenURI({
       tokenId,
       pinataApiKey,
       pinataSecretApiKey,
+      svg,
     });
 
   const data = {

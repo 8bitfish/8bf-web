@@ -1,4 +1,3 @@
-import fs from "fs";
 import { getShades } from "./utils/shades";
 import { p } from "./assets/patterns/patternExport";
 import { tokenURI } from "./tokenURI";
@@ -6,7 +5,7 @@ import { Colors } from "../../global";
 import { verifyExistence } from "./firebase";
 
 export const tokenData = async (): Promise<{
-  svg: string;
+  svg: Buffer;
   pattern: string;
   colors: Colors;
 }> => {
@@ -32,7 +31,7 @@ export const tokenData = async (): Promise<{
   }
 
   return {
-    svg: p[pattern]({ primary, secondary }),
+    svg: Buffer.from(p[pattern]({ primary, secondary })),
     pattern,
     colors: { primary, secondary },
   };
@@ -46,15 +45,7 @@ export async function newToken({
     svg,
     pattern,
     colors,
-  }: { svg: string; pattern: string; colors: Colors } = await tokenData();
-
-  const assetDir: string = `./functions/server/assets/generated`;
-
-  try {
-    await fs.promises.writeFile(`${assetDir}/#${tokenId}.svg`, svg);
-  } catch (e) {
-    throw e;
-  }
+  }: { svg: Buffer; pattern: string; colors: Colors } = await tokenData();
 
   const {
     hash,
@@ -64,6 +55,7 @@ export async function newToken({
     tokenId,
     colors,
     pattern,
+    svg,
   });
 
   return { hash, imageHash, uri };

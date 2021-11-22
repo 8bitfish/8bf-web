@@ -1,5 +1,4 @@
 import axios from "axios";
-import fs from "fs";
 import { MetaData } from "../../../global";
 
 export async function json({
@@ -36,14 +35,5 @@ export async function json({
   } catch (e) {
     console.error(e);
     throw e;
-  } finally {
-    try {
-      await fs.promises.unlink(
-        `./functions/server/assets/generated/#${tokenId}.svg`
-      );
-    } catch (e) {
-      console.error(e);
-      throw e;
-    }
   }
 }

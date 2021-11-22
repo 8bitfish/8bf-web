@@ -1,5 +1,4 @@
 import axios from "axios";
-import fs from "fs";
 // @ts-ignore
 import FormData from "form-data";
 
@@ -7,20 +6,21 @@ export async function file({
   tokenId,
   pinataApiKey,
   pinataSecretApiKey,
+  svg,
 }: {
   tokenId: string | string[];
   pinataApiKey: string;
   pinataSecretApiKey: string;
+  svg: Buffer;
 }): Promise<{ image: string; imageHash: string }> {
   const url = "https://api.pinata.cloud/pinning/pinFileToIPFS";
   const gateway = "https://gateway.pinata.cloud/ipfs/";
 
   const data = new FormData();
 
-  data.append(
-    "file",
-    fs.createReadStream(`./functions/server/assets/generated/#${tokenId}.svg`)
-  );
+  data.append("file", svg, {
+    filename: `8BF #${tokenId}.svg`,
+  });
 
   const metadata = JSON.stringify({
     name: `8BF #${tokenId}.svg`,
