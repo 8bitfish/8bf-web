@@ -1,6 +1,6 @@
 {
   "functions": {
-    "api/requestNewToken/[tokenId].ts": {
+    "pages/api/requestNewToken/[tokenId].ts": {
       "includeFiles": "_files/**"
     }
   }
