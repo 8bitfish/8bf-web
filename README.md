@@ -2,7 +2,7 @@
 
 <p align="center">
   <span><a href="https://twitter.com/8bitfish_crypto"><img src="https://socialize-md.vercel.app/api/badge/twitter" alt="twitter" /></a></span>
-  <span><a href="https://testnets.opensea.io/collection/8bitfish-v4"><img src="https://socialize-md.vercel.app/api/badge/opensea" alt="opensea" /></a></span>
+  <span><a href="https://opensea.io/collection/8bitfishnft"><img src="https://socialize-md.vercel.app/api/badge/opensea" alt="opensea" /></a></span>
   <span><a href="https://discord.gg/dYfUayrJD2"><img src="https://socialize-md.vercel.app/api/badge/discord" alt="discord" /></a></span>
 </p>
 
