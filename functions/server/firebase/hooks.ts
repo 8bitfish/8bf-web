@@ -18,8 +18,10 @@ const tokenExists = async ({ primary, secondary, pattern }: Token) => {
   const querySnapshot = await getDocs(q);
 
   if (querySnapshot.empty) {
+    console.log("Token does not exist");
     return false;
   }
+  console.log("Token exists");
   return true;
 };
 
