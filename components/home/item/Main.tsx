@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { IoMdArrowRoundForward } from "react-icons/io";
 // import axios from "axios";
 import type { MetaData, TransactionData } from "../../../global";
 import Image from "next/image";
@@ -12,8 +13,7 @@ export const Main = ({
   data: { token: MetaData; transaction: TransactionData };
 }): JSX.Element => {
   const { svg, tokenId, colors, pattern, ipfsHash, description } = token;
-  const { from, transactionHash, price } = transaction;
-  const { eth, usd } = price;
+  const { transactionHash } = transaction;
 
   return (
     <div className="relative flex flex-col md:flex-row md:items-start items-center">
@@ -23,8 +23,8 @@ export const Main = ({
             8bitfish #{tokenId}
           </h2>
           <p className="text-[10px] text-[#ffffff9c] font-semibold">
-            {8000 - Number(tokenId)} / 8000 left at {getPrice(Number(tokenId))}Ξ
-            each
+            {8000 - Number(tokenId)} / 8000 left at {getPrice(Number(tokenId))}{" "}
+            MATIC each
           </p>
         </div>
         <div className="md:w-[215px] md:h-[215px] w-[80vw] overflow-hidden rounded-md">
@@ -45,7 +45,7 @@ export const Main = ({
 
         <div className="flex flex-row md:my-1 my-3">
           <ExternalButtons id={tokenId} hash={ipfsHash} />
-          <Transaction eth={eth} usd={usd} />
+          <Transaction hash={transactionHash} />
         </div>
 
         <p className="md:m-0 -mt-1 md:text-[15px] text-[11.5px] text-[#ffffff9c] font-bold">
@@ -62,24 +62,19 @@ export const Main = ({
   );
 };
 
-const Transaction = ({ eth, usd }: { eth: number; usd: number }) => {
-  const [currency, toggleEth] = useState(true);
+const Transaction = ({ hash }: { hash: string }) => {
   return (
-    <div
-      className="mt-0 flex items-center justify-center md:px-1 px-2 cursor-pointer rounded-md text-[#ffffff9c] bg-white/5 border-2 border-white/10 bg-opacity-10 "
-      onClick={() => toggleEth(!currency)}
-    >
-      <p className="text-[10px] font-semibold">
-        {currency ? `${eth}Ξ` : `$${usd}`}
-      </p>
-      <div className="relative">
-        <span className="absolute md:left-[9px] left-[13px] -bottom-2 w-0.5 h-4 rounded-full bg-white/10 inline-block" />
-        <span
-          className={`${
-            !currency ? "translate-y-4" : "translate-y-0"
-          } transform  absolute md:left-2 left-3 bottom-1.5 w-1 h-1 transition duration-200 rounded-full bg-white/60 inline-block`}
+    <div className="relative mr-1 mt-0 flex items-center md:justify-center cursor-pointer rounded-md md:px-1 px-2 text-[#ffffff9c] bg-white/5 border-2 border-white/10 bg-opacity-10 hover:text-[#ffffffc6] hover:border-white/30 group">
+      <a
+        href={`https://polygonscan.com/tx/${hash}`}
+        className="text-[10px] font-semibold"
+      >
+        tx on polyscan
+        <IoMdArrowRoundForward
+          className="absolute transform group-hover:-rotate-45
+            inline -top-1 -right-1 transition duration-150"
         />
-      </div>
+      </a>
     </div>
   );
 };

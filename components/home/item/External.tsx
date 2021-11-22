@@ -27,7 +27,7 @@ const External = ({ os, ep }: { os: boolean; ep: string }) => {
       <a
         href={
           os
-            ? `https://testnets.opensea.io/assets/0x779a828c0cb861797bc7ce64ed32d27004a87788/${ep}`
+            ? `https://opensea.io/assets/matic/0x3496344be62fe6c6dd12dd89006badbc579c63ac/${ep}`
             : `https://gateway.pinata.cloud/ipfs/${ep}`
         }
         className="text-[10px] font-semibold"

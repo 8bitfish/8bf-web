@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useCallback, useMemo } from "react";
-import axios from "axios";
 import Image from "next/image";
 import { AttributeGroup } from "./AttributeGroup";
 import { p } from "../../../../functions/server/assets/patterns/patternExport";
@@ -16,8 +15,6 @@ interface tokenData {
 }
 
 export const Main = ({ totalSupply }: { totalSupply: number }): JSX.Element => {
-  const [currentUSD, setCurrentUSD] = useState<number>(3213);
-  const [currentEth, setCurrentEth] = useState<number>(0.0);
   const [token, setToken] = useState<tokenData>({
     svg: `<svg xmlns="http://www.w3.org/2000/svg" width="350" height="350" viewBox="0 0 350 350">
     <defs>
@@ -62,15 +59,6 @@ export const Main = ({ totalSupply }: { totalSupply: number }): JSX.Element => {
     [totalSupply]
   );
 
-  const currencies = useCallback(async () => {
-    const usd: { data: { USD: number } } = await axios.get(
-      "https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=USD"
-    );
-
-    setCurrentUSD(usd.data.USD);
-    setCurrentEth(Number(currentPrice));
-  }, [totalSupply]);
-
   const getToken = async (): Promise<void> => {
     const tokenData = async () => {
       const color = (): string => {
@@ -109,10 +97,6 @@ export const Main = ({ totalSupply }: { totalSupply: number }): JSX.Element => {
     };
   }, []);
 
-  useEffect(() => {
-    currencies();
-  }, [currencies]);
-
   return (
     <div className="relative flex flex-col md:flex-row md:items-start items-center">
       <div className="relative md:mr-4">
@@ -121,7 +105,7 @@ export const Main = ({ totalSupply }: { totalSupply: number }): JSX.Element => {
             8BitFish
           </h2>
           <p className="text-[10px] text-[#ffffff9c] font-semibold">
-            {8000 - totalSupply} / 8000 left at {currentPrice}Ξ each
+            {8000 - totalSupply} / 8000 left at {currentPrice} MATIC each
           </p>
         </div>
         <div className="md:w-[215px] md:h-[215px] w-[80vw] overflow-hidden rounded-md">
@@ -142,7 +126,7 @@ export const Main = ({ totalSupply }: { totalSupply: number }): JSX.Element => {
 
         <div className="flex flex-row md:my-1 my-3">
           <OpenSeaLink />
-          <TokenFee currentEth={currentEth} currentUSD={currentUSD} />
+          <ContractAddress />
         </div>
         <p className="md:m-0 -mt-1 md:text-[15px] text-[11.5px] text-[#ffffff9c] font-bold">
           Completely randomized algorithmically generated 8-bit fish with over{" "}
@@ -162,7 +146,7 @@ export const Main = ({ totalSupply }: { totalSupply: number }): JSX.Element => {
 const OpenSeaLink = (): JSX.Element => (
   <div className="relative mr-1 mt-0 flex items-center md:justify-center cursor-pointer rounded-md md:px-1 px-2 text-[#ffffff9c] bg-white/5 border-2 border-white/10 bg-opacity-10 hover:text-[#ffffffc6] hover:border-white/30 group">
     <a
-      href="https://opensea.io/assets/CONTRACT_ADDRESS/"
+      href="https://opensea.io/collection/8bitfishnft"
       className="text-[10px] font-semibold"
     >
       opensea
@@ -174,34 +158,17 @@ const OpenSeaLink = (): JSX.Element => (
   </div>
 );
 
-const TokenFee = ({
-  currentEth,
-  currentUSD,
-}: {
-  currentEth: number;
-  currentUSD: number;
-}): JSX.Element => {
-  const [currency, setCurrency] = useState<boolean>(true);
-
-  return (
-    <div
-      className="mt-0 flex items-center justify-center md:px-1 px-2 cursor-pointer rounded-md text-[#ffffff9c] bg-white/5 border-2 border-white/10 bg-opacity-10"
-      onClick={() => setCurrency(!currency)}
+const ContractAddress = (): JSX.Element => (
+  <div className="relative mr-1 mt-0 flex items-center md:justify-center cursor-pointer rounded-md md:px-1 px-2 text-[#ffffff9c] bg-white/5 border-2 border-white/10 bg-opacity-10 hover:text-[#ffffffc6] hover:border-white/30 group">
+    <a
+      href="https://polygonscan.com/address/0x3496344be62fe6c6dd12dd89006badbc579c63ac"
+      className="text-[10px] font-semibold"
     >
-      <p className="text-[10px] font-semibold">
-        token fee:{" "}
-        {currency
-          ? `${currentEth}Ξ`
-          : `$${Math.ceil((currentUSD * currentEth * 100) / 100)}`}
-      </p>
-      <div className="relative">
-        <span className="absolute md:left-[9px] left-[13px] -bottom-2 w-0.5 h-4 rounded-full bg-white/10 inline-block" />
-        <span
-          className={`${
-            !currency ? "translate-y-4" : "translate-y-0"
-          } transform  absolute md:left-2 left-3 bottom-1.5 w-1 h-1 transition duration-200 rounded-full bg-white/60 inline-block`}
-        />
-      </div>
-    </div>
-  );
-};
+      contract
+      <IoMdArrowRoundForward
+        className="absolute transform group-hover:-rotate-45
+            inline -top-1 -right-1 transition duration-150"
+      />
+    </a>
+  </div>
+);

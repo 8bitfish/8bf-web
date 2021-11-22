@@ -5,7 +5,7 @@ import { TypeContract, TypeWeb3 } from "../../global";
 
 declare let window: any;
 
-type Networks = "4" | "5777" | "80001";
+type Networks = 1 | 137 | 4 | 5777 | 80001;
 
 const loadWeb3 = async () => {
   if (window.ethereum) {
@@ -28,6 +28,10 @@ const loadBlockchainData = async (): Promise<{
   const { web3, ethereum } = window;
   const accounts = await ethereum.request({ method: "eth_accounts" });
   const networkId: Networks = await web3.eth.net.getId();
+  console.log(networkId);
+  if (networkId !== 137) {
+    throw new Error("Switch to polygon mainnet");
+  }
   const networkData = BitFish.networks[networkId];
   if (networkData) {
     const { abi } = BitFish;

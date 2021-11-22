@@ -9,7 +9,7 @@ export const NavigationIcons = (): JSX.Element => {
     "fill-current text-[#9ca3af] transform md:scale-100 scale-75 transition duration-200";
   const icons: Array<{ link: string; icon: JSX.Element }> = [
     {
-      link: "/location",
+      link: "https://opensea.io/collection/8bitfishnft",
       icon: (
         <OpenSea key={0} className={`${globalClass} hover:text-[#2181E2]`} />
       ),

@@ -99,10 +99,6 @@ export const mint: Function = async ({
     .once("transactionHash", (hash: string) => {
       console.log(hash);
     })
-    .on("confirmation", (confNumber: string, receipt: object) => {
-      console.log(confNumber);
-      console.log(receipt);
-    })
     .then(
       async (
         receipt: Receipt

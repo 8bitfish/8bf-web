@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { CgSpinner } from "react-icons/cg";
 import { BiErrorAlt } from "react-icons/bi";
 import { getPrice } from "../../../functions/client/utils";
@@ -19,12 +19,15 @@ export const ItemContainer = ({
   mint: () => Promise<void>;
   connect: () => Promise<void>;
 }): JSX.Element => {
-  const currentPrice: string = getPrice(totalSupply + 1);
+  const currentPrice: string = useMemo(
+    () => getPrice(totalSupply + 1),
+    [totalSupply]
+  );
 
   return (
     <div className="relative flex flex-col md:items-center items-start">
       <p className="hidden md:inline text-[10px] text-[#ffffff9c] font-semibold md:mb-0 mb-2">
-        {8000 - totalSupply} / 8000 left at {currentPrice}Ξ each
+        {8000 - totalSupply} / 8000 left at {currentPrice} MATIC each
       </p>
       <div className="md:px-3 md:py-2 rounded-xl md:w-[41.5rem] w-[80vw]">
         {children}

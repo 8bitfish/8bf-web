@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { VscCircleOutline } from "react-icons/vsc";
 import { RiRadioButtonLine } from "react-icons/ri";
 
@@ -9,11 +9,13 @@ export const Account = ({
   connected: boolean;
   account: string | null;
 }): JSX.Element => {
+  const [expanded, setExpanded] = useState(false);
   return (
     <div
       className={`${
         connected ? "bg-green-500/10" : "bg-red-500/10"
-      } rounded-full`}
+      } rounded-full cursor-pointer select-none`}
+      onClick={() => setExpanded(!expanded)}
     >
       <div className="relative flex md:flex-row md:items-center md:pl-2 md:pr-3 md:py-0">
         {connected && (
@@ -29,7 +31,9 @@ export const Account = ({
         >
           {connected
             ? account !== null
-              ? account
+              ? expanded
+                ? account
+                : `${account.substring(0, 6)}...`
               : "connected"
             : "disconnected"}
         </span>
