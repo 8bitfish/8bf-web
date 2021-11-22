@@ -138,13 +138,20 @@ const Home: NextPage = () => {
   };
 
   useEffect(() => {
-    window.ethereum.on("accountsChanged", (accounts: string[]) => {
-      connect();
-    });
-
-    window.ethereum.on("networkChanged", (networkId: string) => {
-      connect();
-    });
+    if (window.ethereum) {
+      window.ethereum.on("accountsChanged", (accounts: string[]) => {
+        connect();
+      });
+      window.ethereum.on("networkChanged", (networkId: string) => {
+        connect();
+      });
+    } else {
+      setError({
+        name: "Error",
+        message:
+          "Non-Ethereum browser detected. You should consider trying MetaMask",
+      });
+    }
   }, []);
 
   return (
