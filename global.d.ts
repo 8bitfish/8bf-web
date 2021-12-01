@@ -34,13 +34,7 @@ export interface MetaData {
 }
 
 export interface TransactionData {
-  from: string;
   transactionHash: string;
-  price: {
-    gas: number;
-    eth: number;
-    usd: number;
-  };
 }
 
 export type Color = {

@@ -34,6 +34,8 @@ const Home: NextPage = () => {
   const [error, setError] = useState<Error | null>(null);
 
   const generateToken = async (): Promise<void> => {
+    const tokenId: number =
+      Number(await contract!.methods.totalSupply().call()) + 1;
     setLoading(true);
     setError(null);
     try {
@@ -41,6 +43,7 @@ const Home: NextPage = () => {
         contract,
         account,
         web3,
+        tokenId,
       });
       const {
         hash,
@@ -79,9 +82,6 @@ const Home: NextPage = () => {
       value: string;
     }> = attributes;
     const svg: { data: string } = await axios.get(image);
-    const usd: { data: { USD: number } } = await axios.get(
-      "https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=USD"
-    );
     setMeta({
       ipfsHash: hash,
       tokenId: receipt.events.Transfer.returnValues.tokenId,
@@ -94,18 +94,7 @@ const Home: NextPage = () => {
       },
     });
     setTransaction({
-      from: "0xcfb1f4a1689517dbe78de50090513c05cd6997a1",
       transactionHash: receipt.transactionHash,
-      price: {
-        gas: receipt.gasUsed,
-        eth: Number(eth) + receipt.gasUsed / Math.pow(10, 9),
-        usd:
-          Math.ceil(
-            usd.data.USD *
-              (Number(eth) + receipt.gasUsed / Math.pow(10, 9)) *
-              100
-          ) / 100,
-      },
     });
 
     setLoading(false);
@@ -183,7 +172,6 @@ const Home: NextPage = () => {
           />
         )}
       </LandingContainer>
-
       <Footer />
     </MainContainer>
   );

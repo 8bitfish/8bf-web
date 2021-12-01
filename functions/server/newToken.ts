@@ -20,15 +20,15 @@ export const tokenData = async (): Promise<{
   const { primary, secondary }: Colors = getShades([getColor(), getColor()]);
   const keys = Object.keys(p);
   const pattern = keys[Math.floor(Math.random() * keys.length)];
-  const exists = await verifyExistence({
-    pattern,
-    primary: primary.base,
-    secondary: secondary.base,
-  });
+  // const exists = await verifyExistence({
+  //   pattern,
+  //   primary: primary.base,
+  //   secondary: secondary.base,
+  // });
 
-  if (!exists) {
-    return tokenData();
-  }
+  // if (!exists) {
+  //   return tokenData();
+  // }
 
   return {
     svg: Buffer.from(p[pattern]({ primary, secondary })),

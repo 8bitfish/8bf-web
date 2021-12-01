@@ -6,12 +6,16 @@ export const mint: Function = async ({
   contract,
   account,
   web3,
+  tokenId,
 }: {
   contract: TypeContract;
   account: string;
   web3: TypeWeb3;
+  tokenId: number;
 }) => {
-  const tokenId = Number(await contract.methods.totalSupply().call()) + 1;
+  const ts = Number(await contract.methods.totalSupply().call()) + 1;
+  console.log(ts);
+  console.log(tokenId);
   if (tokenId > 8000) {
     throw new Error("Token ID exceeds 8000.");
   }
@@ -99,6 +103,10 @@ export const mint: Function = async ({
     .once("transactionHash", (hash: string) => {
       console.log(hash);
     })
+    .on("confirmation", (confNumber: string, receipt: object) => {
+      console.log(confNumber);
+      console.log(receipt);
+    })
     .then(
       async (
         receipt: Receipt
@@ -115,7 +123,11 @@ export const mint: Function = async ({
         .catch((e) => {
           console.log(e);
         });
-      throw new Error(errorValues[e.code.toString()].message);
+      if (e.code.toString() === undefined) {
+        throw e;
+      } else {
+        throw new Error(errorValues[e.code.toString()].message);
+      }
     });
 
   return res;

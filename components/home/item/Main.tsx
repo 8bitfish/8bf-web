@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { IoMdArrowRoundForward } from "react-icons/io";
-// import axios from "axios";
 import type { MetaData, TransactionData } from "../../../global";
 import Image from "next/image";
 import { AttributeGroup } from "./AttributeGroup";
