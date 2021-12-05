@@ -155,7 +155,7 @@ const OpenSeaLink = (): JSX.Element => (
 const ContractAddress = (): JSX.Element => (
   <div className="relative mr-1 mt-0 flex items-center md:justify-center cursor-pointer rounded-md md:px-1 px-2 text-[#ffffff9c] bg-white/5 border-2 border-white/10 bg-opacity-10 hover:text-[#ffffffc6] hover:border-white/30 group">
     <a
-      href="https://polygonscan.com/address/0x2ef83f2c9b506fe0f6ad54d553387f96d292e074"
+      href="https://polygonscan.com/address/0x1f80cf75e123435133749ec26678fbb1e199e10c"
       className="text-[10px] font-semibold"
     >
       contract
