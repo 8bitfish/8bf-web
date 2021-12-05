@@ -1,14 +1,13 @@
 import React, { useMemo } from "react";
 import { CgSpinner } from "react-icons/cg";
 import { BiErrorAlt } from "react-icons/bi";
-import { getPrice } from "../../../functions/client/utils";
+// import { getPrice } from "../../../functions/client/utils";
 export const ItemContainer = ({
   children,
   totalSupply,
   loading,
   connected,
   error,
-  mint,
   connect,
 }: {
   children: React.ReactChild;
@@ -16,18 +15,12 @@ export const ItemContainer = ({
   loading: boolean;
   connected: boolean;
   error: Error | null;
-  mint: () => Promise<void>;
   connect: () => Promise<void>;
 }): JSX.Element => {
-  const currentPrice: string = useMemo(
-    () => getPrice(totalSupply + 1),
-    [totalSupply]
-  );
-
   return (
     <div className="relative flex flex-col md:items-center items-start">
       <p className="hidden md:inline text-[10px] text-[#ffffff9c] font-semibold md:mb-0 mb-2">
-        {8000 - totalSupply} / 8000 left at {currentPrice} MATIC each
+        {totalSupply} out of 8000 minted @ 0.01 ETH each
       </p>
       <div className="md:px-3 md:py-2 rounded-xl md:w-[41.5rem] w-[80vw]">
         {children}
@@ -48,23 +41,24 @@ export const ItemContainer = ({
                 } `
           } md:mt-2 mt-2 py-1 md:px-9 md:w-auto w-full rounded-lg font-semibold uppercase md:text-sm text-xs bg-opacity-10 md:bg-opacity-100 md:hover:bg-opacity-10 transition duration-200 md:text-white/60 md:bg-white/10`}
           onClick={
-            totalSupply === 8000
-              ? () => alert("Maximum supply met.")
-              : connected
-              ? mint
+            connected
+              ? () =>
+                  (window.location.href =
+                    "https://opensea.io/collection/8bitfishnft")
               : connect
           }
+          // onClick={
+          //   totalSupply === 8000
+          //     ? () => alert("Maximum supply met.")
+          //     : connected
+          //     ? mint
+          //     : connect
+          // }
         >
           {loading ? (
             <CgSpinner className="animate-spin md:h-5 md:w-5 h-4 w-4 md:mx-1.5 mx-auto" />
           ) : (
-            <>
-              {totalSupply === 8000
-                ? "Sold out"
-                : connected
-                ? "Mint new token"
-                : "Connect with metamask"}
-            </>
+            <>{connected ? "Purchase on opensea" : "Connect with metamask"}</>
           )}
         </button>
 

@@ -12,6 +12,7 @@ export interface TypeContract {
       hash: string,
       uri: string
     ) => { send: ({ from: string, value: string }) => any };
+    tokenURI: (tokenId: number) => { call: () => Promise<string> };
   };
 }
 
@@ -54,4 +55,32 @@ export type Color = {
 export interface Colors {
   primary: Color;
   secondary: Color;
+}
+
+// Token
+
+type TraitType = "Pattern" | "Primary Color" | "Secondary Color";
+export interface Token {
+  description: string;
+  image: string;
+  name: string;
+  attributes: [
+    {
+      trait_type: TraitType;
+      value: string;
+    },
+    {
+      trait_type: TraitType;
+      value: string;
+    },
+    {
+      trait_type: TraitType;
+      value: string;
+    },
+    {
+      display_type: "date";
+      trait_type: "birthday";
+      value: number;
+    }
+  ];
 }

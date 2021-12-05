@@ -3,6 +3,7 @@ import { IoMdArrowRoundForward } from "react-icons/io";
 export const Footer = (): JSX.Element => {
   return (
     <div className="w-full py-3 text-center">
+      {/* absolute bottom-2 bg-white/5 */}
       <p className="text-white/40 font-semibold text-xs">
         {/* Want to give feedback?{" "}
         <a

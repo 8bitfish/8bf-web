@@ -3,7 +3,6 @@ import Image from "next/image";
 import { AttributeGroup } from "./AttributeGroup";
 import { p } from "../../../../functions/server/assets/patterns/patternExport";
 import { getShades } from "../../../../functions/server/utils/shades";
-import { getPrice } from "../../../../functions/client/utils";
 import { IoMdArrowRoundForward } from "react-icons/io";
 
 interface tokenData {
@@ -54,11 +53,6 @@ export const Main = ({ totalSupply }: { totalSupply: number }): JSX.Element => {
     secondary: "#4B2998",
   });
 
-  let currentPrice: string = useMemo(
-    () => getPrice(totalSupply + 1),
-    [totalSupply]
-  );
-
   const getToken = async (): Promise<void> => {
     const tokenData = async () => {
       const color = (): string => {
@@ -105,7 +99,7 @@ export const Main = ({ totalSupply }: { totalSupply: number }): JSX.Element => {
             8BitFish
           </h2>
           <p className="text-[10px] text-[#ffffff9c] font-semibold">
-            {8000 - totalSupply} / 8000 left at {currentPrice} MATIC each
+            {totalSupply} out of 8000 @ 0.01 ETH each
           </p>
         </div>
         <div className="md:w-[215px] md:h-[215px] w-[80vw] overflow-hidden rounded-md">
@@ -161,7 +155,7 @@ const OpenSeaLink = (): JSX.Element => (
 const ContractAddress = (): JSX.Element => (
   <div className="relative mr-1 mt-0 flex items-center md:justify-center cursor-pointer rounded-md md:px-1 px-2 text-[#ffffff9c] bg-white/5 border-2 border-white/10 bg-opacity-10 hover:text-[#ffffffc6] hover:border-white/30 group">
     <a
-      href="https://polygonscan.com/address/0x3496344be62fe6c6dd12dd89006badbc579c63ac"
+      href="https://polygonscan.com/address/0x2ef83f2c9b506fe0f6ad54d553387f96d292e074"
       className="text-[10px] font-semibold"
     >
       contract
