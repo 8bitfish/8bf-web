@@ -29,9 +29,9 @@ const loadBlockchainData = async (): Promise<{
   const accounts = await ethereum.request({ method: "eth_accounts" });
   const networkId: Networks = await web3.eth.net.getId();
   console.log(networkId);
-  // if (networkId !== 137 && networkId !== 80001 && networkId !== 5777) {
-  //   throw new Error("Switch to polygon mainnet");
-  // }
+  if (networkId !== 137) {
+    throw new Error("Switch to polygon mainnet");
+  }
   const networkData = BitFish.networks[networkId];
   if (networkData) {
     const { abi } = BitFish;
