@@ -3,7 +3,11 @@ module.exports = {
   purge: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      gridTemplateColumns: {
+        tokens: "repeat(auto-fill,minmax(50px,1fr))",
+      },
+    },
   },
   variants: {
     extend: {},

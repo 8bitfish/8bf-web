@@ -36,7 +36,7 @@ const loadBlockchainData = async (): Promise<{
   if (networkData) {
     const { abi } = BitFish;
     const { address } = networkData;
-    const contract = new web3.eth.Contract(abi as AbiItem[], address);
+    const contract = await new web3.eth.Contract(abi as AbiItem[], address);
     return { web3, accounts, contract };
   } else {
     throw new Error("Smart contract not deployed to detected network");

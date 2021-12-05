@@ -43,7 +43,7 @@ const Container = ({
 }): JSX.Element => {
   return (
     <div className="w-full flex flex-col items-center">
-      <div className="flex flex-row items-center justify-between md:w-full w-[80vw] py-3 pt-4 md:pt-8 md:px-4">
+      <div className="relative -mb-5 flex flex-row items-center justify-between md:w-full w-[80vw] py-3 pt-4 md:pt-8 md:px-4">
         {children}
       </div>
     </div>
